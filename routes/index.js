@@ -45,7 +45,7 @@ router.post('/', function (req, res, next) {
       from: 'Motherly1402@gmail.com',
       to: req.body.email,
       subject: 'Motherly Newsletter',
-      text: ''
+      text: 'Thanks for subscribing our newsletter!'
     };
     transporter.sendMail(mailOptions, function (error, info) {
       if (error) {
@@ -64,7 +64,7 @@ User.find().exec(function (err, user) {
       from: 'Motherly1402@gmail.com',
       to: user[i].userid,
       subject: 'Sending Email using Node.js',
-      text: 'That was easy!'
+      text: 'Thanks for joining motherly.'
     };
     transporter.sendMail(mailOptions, function (error, info) {
       if (error) {

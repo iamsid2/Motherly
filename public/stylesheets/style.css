@@ -45,11 +45,11 @@ header a{
 	font-size: 16px;
 }
 
-header li{
-	float:left;
+header nav ul li{
 	display:inline;
     padding: 0 20px 0 20px; 
  }
+
  header #branding{
  	float:left;
 
@@ -75,7 +75,7 @@ header li{
 #showcase{
 	min-height:  600px;
 
-	background:url('/images/homepage.jpg') no-repeat    ;
+	background:url('/images/homepage1.jpg') no-repeat    ;
 	background-size: 1470px 600px;
 	text-align: center;
 	color:#b51a12;
@@ -102,7 +102,7 @@ header li{
 #newsletter form{
 	float:right;
 }
-#newsletter input(type="input"){
+#newsletter input[type="input"]{
 	padding:4px;
 	height:25px;
 	width:250px;
