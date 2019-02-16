@@ -9,6 +9,9 @@ router.get('/', function(req, res, next) {
 router.get('/chatroom', (req, res) => {
       res.render('chatroom')
     });
+router.get('/videos', (req,res,next) => {
+	res.render('videos');
+})
 
 router.get('/chatbot', (req, res) => {
       res.render('chatbot')

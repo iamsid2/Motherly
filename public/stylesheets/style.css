@@ -208,7 +208,7 @@ footer{
 
 .flip-box-back ,.flip-box-back2 ,.flip-box-back3{
   background-color: dodgerblue;
-  color: white;
+  color: #E5636B;
   transform: rotateY(180deg);
 }
 * {box-sizing:border-box}
@@ -306,3 +306,9 @@ footer{
   from {opacity: .4} 
   to {opacity: 1}
 } 
+
+.col_third{
+	margin-left: 0px;
+	margin-top: 20px;
+}
+

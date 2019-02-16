@@ -74,6 +74,15 @@ router.get('/about', function (req, res, next) {
 router.get('/login', function (req, res, next) {
   res.render('login', { title: 'Express' });
 });
+router.get('/Schemes', function (req, res, next) {
+  res.render('Schemes', { title: 'Express' });
+});
+router.get('/diet', function (req, res, next) {
+  res.render('diet', { title: 'Express' });
+});
+router.get('/user', function (req, res, next) {
+  res.render('user', { title: 'Express' });
+});
 
 //for newsletter subscription
 router.post('/', function (req, res, next) {
