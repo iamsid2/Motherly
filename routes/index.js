@@ -231,6 +231,9 @@ router.post('/signup', function (req, res, next) {
       if (error) {
         return next(error);
       }
+      else{
+        return res.redirect('/dashboard');
+      }
     })
   }
 })
