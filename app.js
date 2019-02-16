@@ -17,7 +17,7 @@ var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 var db = mongoose.connection;
 //mongo connection
-var url = 'mongodb://localhost:27017/motherly'; //Db name
+var url = 'mongodb://prabi:prabi6@ds237955.mlab.com:37955/motherly'; //Db name
 mongoose.Promise = global.Promise;
 mongoose.connect(url, { useNewUrlParser: true } ,function (err, db) { //a connection with the mongodb is established here.
   if(!err) console.log("Database connected");
@@ -71,6 +71,3 @@ app.listen(4000, '0.0.0.0', function() {
 });
 
 module.exports = app;
-
-
-
