@@ -6,6 +6,58 @@
         SMSSENDER
     </title>
     <!-- <link rel='stylesheet' href='/stylesheets/style.css' /> -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <style>
+    .modal-header, h4, .close {
+        background-color: #2EF9AE;
+        color:white !important;
+        text-align: center;
+        font-size: 30px;
+    }
+    .modal-footer {
+        background-color: #f9f9f9;
+    }
+
+    body{
+        background-image: url("/images/doc_back.jpeg");
+        background-size: cover;    
+        align-items: center;
+    }
+
+    h1 {
+        background-color: #2EF9AE;
+        height: 50px;
+        width: 1500px;
+        align-content: center;
+    }
+
+    table{
+        border: 1px solid black;
+        width: 1200px;
+        margin-left : 60px;
+        margin-top : 60px;
+
+    }
+    th, tr, td{
+        border: 1px solid black;
+        height: 20px;
+    }
+
+    #updateBtn{
+        background-color: #2EF9AE;
+        margin-top: 150px;
+        float: right;
+    }
+    #signUpBtn{
+        background-color: #2EF9AE;
+        margin-top: 150px;
+        float: left;
+    }
+</style>
 </head>
 
 <body style="text-align: center">
@@ -55,40 +107,146 @@
         <% } %>
     </table>
     <% } %>
-    <form action="/register" method="POST">
-        <label for="username">User Name:</label>
-        <input name="username" type="text">
-        <label for="userid">Email:</label>
-        <input name="userid" type="email">
-        <label for="pass">Password:</label>
-        <input name="pass" type="password">
-        <label for="passconf">Confirm Password:</label>
-        <input name="passconf" type="password">
-        <label for="duedate">Due Date:</label>
-        <input name="duedate" type="date">
-        <label for="nextvisit">Next Visit:</label>
-        <input name="nextvisit" type="date">
-        <label for="phone">Phone:</label>
-        <input name="phone" type="text" value="+91">
-        <button type="submit">Add Patient</button>
-    </form>
-    <br><br><br><br><br><br>
-    <form action="/update" method="POST">
-        <label for="logid">Email:</label>
-        <input name="logid" type="email">
-        <label for="logpass">Password:</label>
-        <input name="logpass" type="password">
-        <label for="upnextvisit">Next visit:</label>
-        <input name="upnextvisit" type="date">
-        <label for="delivery">Delivery Complete:</label>
-        <input name="delivery" type="radio" value="true">YES
-        <input name="delivery" type="radio" value="false">NO<br>
-        <label for="deliverydate">Delivery Date:</label>
-        <input name="deliverydate" type="date">
-        <button type="submit">Update Patient</button>
-    </form>
-    <h2></h2>
-    <h3></h3>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+              <!-- Trigger the modal with a button -->
+              <button type="button" class="btn btn-default btn-lg" id="signUpBtn" onclick="myFunction2">Add New Patient</button>
+          </div>
+
+          <!-- Modal -->
+          <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header" style="padding:35px 50px;">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4><span class="glyphicon glyphicon-lock"></span> Sign Up </h4>
+              </div>
+              <div class="modal-body" style="padding:40px 50px;">
+                  <form action="/register" method="POST">
+                    <div class="form-group">
+                        <label for="username">User Name:</label>
+                        <input name="username" type="text">
+                    </div>
+                    <div class="form-group">
+                        <label for="userid">Email:</label>
+                        <input name="userid" type="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="pass">Password:</label>
+                        <input name="pass" type="password">
+                    </div>
+                    <div class="form-group">
+                        <label for="passconf">Confirm Password:</label>
+                        <input name="passconf" type="password">
+                    </div>
+                    <div class="form-group">
+                        <label for="duedate">Due Date:</label>
+                        <input name="duedate" type="date">
+                    </div>
+                    <div class="form-group">
+                        <label for="nextvisit">Next Visit:</label>
+                        <input name="nextvisit" type="date">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone:</label>
+                        <input name="phone" type="text" value="+91">
+                    </div>
+                    <button type="submit">Add Patient</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+          </div>
+      </div>
+
+  </div>
+</div> 
+<div class="col-lg-6">
+  <!-- Trigger the modal with a button -->
+  <button type="button" class="btn btn-default btn-lg" id="updateBtn" onclick="myFunction">Update Patient</button>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="myModal2" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header" style="padding:35px 50px;">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4><span class="glyphicon glyphicon-lock"></span> Update Patient </h4>
+      </div>
+      <div class="modal-body" style="padding:40px 50px;">
+          <form action="/register" method="POST">
+            <div class="form-group">
+                <label for="logid">Email:</label>
+                <input name="logid" type="email">
+            </div>
+            <div class="form-group">
+                <label for="logpass">Password:</label>
+                <input name="logpass" type="password">
+            </div>
+            <div class="form-group">
+                <label for="upnextvisit">Next visit:</label>
+                <input name="upnextvisit" type="date">
+            </div>
+            <div class="form-group">
+                <label for="delivery">Delivery Complete:</label>
+                <input name="delivery" type="radio" value="true">YES
+                <input name="delivery" type="radio" value="false">NO<br>
+            </div>
+            <div class="form-group">
+                <label for="deliverydate">Delivery Date:</label>
+                <input name="deliverydate" type="date">
+            </div>    
+            <button type="submit">Update Patient</button>
+        </form>
+    </div>
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+  </div>
+</div>
+
+</div>
+</div> 
+</div>
+</div>
+
+
+<script>
+    $(document).ready(function(){
+      $("#updateBtn").click(function(){
+        $("#myModal2").modal();
+    });
+      $("#signUpBtn").click(function(){
+        $("#myModal").modal();
+    });
+  });
+    function myFunction() {
+      var x = document.getElementById("updateBtn");
+      if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
+function myFunction2() {
+  var y = document.getElementById("signUpBtn");
+  if (y.style.display === "none") {
+    y.style.display = "block";
+} else {
+    y.style.display = "none";
+}
+}
+</script>
 </body>
 
 </html>
+
+
+
+
+
