@@ -29,7 +29,7 @@ var DoctorSchema = new mongoose.Schema({
 
 //authenticate input against database
 DoctorSchema.statics.authenticate = function (logid, logpass, callback) {
-    User.findOne({ userid: logid, pass: logpass })
+    Doctor.findOne({ userid: logid, pass: logpass })
         .exec(function (err, user) {
             if (err) {
                 return callback(err)

@@ -24,7 +24,7 @@
 
     body{
         background-image: url("/images/doc_back.jpeg");
-        background-size: cover;    
+        background-size: cover;
         align-items: center;
     }
 
@@ -38,7 +38,7 @@
     table{
         border: 1px solid black;
         width: 1200px;
-        margin-left : 60px;
+        margin-left : 150px;
         margin-top : 60px;
 
     }
@@ -57,10 +57,33 @@
         margin-top: 150px;
         float: left;
     }
+  	.navbar{
+  		overflow: hidden;
+  		background-color: #333 !important;
+  		top: 0; /* Position the navbar at the top of the page */
+  		width: 100%; /* Full width */
+  	box-shadow: 3px 3px 8px hsl(0, 0%, 80%);
+  }
+  .navbar a:hover{
+  color: green !important;
+  font--size: 1.5em;
+      }
 </style>
 </head>
 
 <body style="text-align: center">
+  <div class="navbar navbar-default">
+    <ul class="nav navbar-nav">
+   <!-- <li> <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a></li> -->
+   <li><a href="/">Home</a></li>
+   <li> <a href="/users/videos">Videos</a></li>
+    <li><a href="/users/diet">Diet & Maternity Planner</a></li>
+    <li><a href="/users/schemes">Schemes</a></li>
+    <li><a href="/users/chatbot">Chatbot</a></li>
+    <li><a href="/users/chatroom">Chatroom</a></li>
+    <li><a href="/logout">Logout</a></li>
+  </ul>
+  </div>
     <% if(patients.length>0) { %>
     <h1>PRE NATAL CARE PATIENTS</h1>
     <table>
@@ -98,7 +121,7 @@
                 <%= deliveries[i].username %>
             </td>
             <td>
-                <%= deliveries[i].duedate %>
+                <%= deliveries[i].deliverydate %>
             </td>
             <td>
                 <%= deliveries[i].nextvisitdate %>
@@ -126,7 +149,7 @@
                   <h4><span class="glyphicon glyphicon-lock"></span> Sign Up </h4>
               </div>
               <div class="modal-body" style="padding:40px 50px;">
-                  <form action="/register" method="POST">
+                  <form action="/users/register" method="POST">
                     <div class="form-group">
                         <label for="username">User Name:</label>
                         <input name="username" type="text">
@@ -164,7 +187,7 @@
       </div>
 
   </div>
-</div> 
+</div>
 <div class="col-lg-6">
   <!-- Trigger the modal with a button -->
   <button type="button" class="btn btn-default btn-lg" id="updateBtn" onclick="myFunction">Update Patient</button>
@@ -180,7 +203,7 @@
           <h4><span class="glyphicon glyphicon-lock"></span> Update Patient </h4>
       </div>
       <div class="modal-body" style="padding:40px 50px;">
-          <form action="/register" method="POST">
+          <form action="/users/update" method="POST">
             <div class="form-group">
                 <label for="logid">Email:</label>
                 <input name="logid" type="email">
@@ -201,7 +224,7 @@
             <div class="form-group">
                 <label for="deliverydate">Delivery Date:</label>
                 <input name="deliverydate" type="date">
-            </div>    
+            </div>
             <button type="submit">Update Patient</button>
         </form>
     </div>
@@ -211,7 +234,7 @@
 </div>
 
 </div>
-</div> 
+</div>
 </div>
 </div>
 
@@ -245,8 +268,3 @@ function myFunction2() {
 </body>
 
 </html>
-
-
-
-
-

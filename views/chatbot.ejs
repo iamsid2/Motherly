@@ -10,10 +10,38 @@
     <title>Simple AI Demo with Web Speech API</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="/stylesheets/chatbot_style.css">
+    <style>
+    .navbar{
+      overflow: hidden;
+      background-color: #333 !important;
+      top: 0; /* Position the navbar at the top of the page */
+      width: 100%; /* Full width */
+    box-shadow: 3px 3px 8px hsl(0, 0%, 80%);
+    }
+    .navbar a:hover{
+    color: green !important;
+    font--size: 1.5em;
+      }
+    </style>
   </head>
 
   <body>
+    <div class="navbar navbar-default">
+  		<ul class="nav navbar-nav">
+  	 <!-- <li> <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a></li> -->
+  	 <li><a href="/">Home</a></li>
+  	 <li> <a href="/users/videos">Videos</a></li>
+  	  <li><a href="/users/diet">Diet & Maternity Planner</a></li>
+  	  <li><a href="/users/schemes">Schemes</a></li>
+  	  <li><a href="/users/chatbot">Chatbot</a></li>
+  	  <li><a href="/users/chatroom">Chatroom</a></li>
+      <li><a href="/logout">Logout</a></li>
+  	</ul>
+  	</div>
     <section>
       <h1>Simple AI Bot</h1>
       <h2>with Web Speech API</h2>

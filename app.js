@@ -72,8 +72,8 @@ app.use(function(err, req, res, next) {
 });
 
 
-const ser = app.listen(4000,'0.0.0.0', function() {
-    console.log('Server Listening to port 4000');
+const ser = app.listen(3030,'0.0.0.0', function() {
+    console.log('Server Listening to port 3030');
 });
 
 const io = require('socket.io')(ser);

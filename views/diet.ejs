@@ -2,6 +2,9 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <style>
 body {
@@ -118,47 +121,64 @@ body {
   .sidenav {padding-top: 15px;}
   .sidenav a {font-size: 18px;}
 }
+.navbar{
+  overflow: hidden;
+  background-color: #333 !important;
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+box-shadow: 3px 3px 8px hsl(0, 0%, 80%);
+}
+.navbar a:hover{
+color: green !important;
+font--size: 1.5em;
+  }
 </style>
 </head>
 <body>
+  <div class="navbar navbar-default">
+    <ul class="nav navbar-nav">
+   <!-- <li> <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a></li> -->
+   <li><a href="/">Home</a></li>
+   <li> <a href="/users/videos">Videos</a></li>
+    <li><a href="/users/diet">Diet & Maternity Planner</a></li>
+    <li><a href="/users/schemes">Schemes</a></li>
+    <li><a href="/users/chatbot">Chatbot</a></li>
+    <li><a href="/users/chatroom">Chatroom</a></li>
+    <li><a href="/logout">Logout</a></li>
+  </ul>
+  </div>
 
-<div id="mySidenav" class="sidenav">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" >&times;</a>
-  <a>Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero's De Finibus Bonorum et Malorum for use in a type specimen book. It usually begins with:
+<div id="mySidenav1" class="sidenav1">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav0()" >&times;</a>
+  <p>Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero's De Finibus Bonorum et Malorum for use in a type specimen book. It usually begins with:
 
-“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.”
+“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.”</p>
 
-At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</a>
 </div>
 <div id="mySidenav2" class="sidenav2">
   <a href="javascript:void(0)" class="closebtn1" onclick="closeNav1()">&times;</a>
-  <a >Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero's De Finibus Bonorum et Malorum for use in a type specimen book. It usually begins with:
+  <p>Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero's De Finibus Bonorum et Malorum for use in a type specimen book. It usually begins with:
 
 “Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.”
-At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</a>
-  
+At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
+
 </div>
-<div id="mySidenav3" class="sidenav2">
-  <a href="javascript:void(0)" class="closebtn2" onclick="closeNav2()">&times;</a>
-  
-  <a >At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</a>
-</div>
+
 
 <h2 style="font-style: italic; color: #C0C0C0">Maternity Diet and Lifestyle Planner</h2>
 
-
-<a style="font-size:30px;cursor:pointer color:black; margin-left: 400px;margin-top: 800px;" onclick="openNav() ">&#9776; Diet for First Trimester</a><br>
+<a style="font-size:30px;cursor:pointer color:black; margin-left: 400px;margin-top: 800px;" onclick="openNav0() ">&#9776; Diet for First Trimester</a><br>
 <a style="font-size:30px;cursor:pointer; margin-left: 400px;" onclick="openNav1()">&#9776; Diet  for Second Tremester</a><br>
-<a style="font-size:30px;cursor:pointer; margin-left: 400px" onclick="openNav2()">&#9776; Diet for Third trimester</a><br>
+<!-- <a style="font-size:30px;cursor:pointer; margin-left: 400px" onclick="openNav2()">&#9776; Diet for Third trimester</a><br> -->
 <img src="/images/diet.jpg" style="margin-top: 100px; margin-left: 300px; width:600px; height:300px;">
 
 <script>
-function openNav() {
-  document.getElementById("mySidenav").style.width = "100%";
+function openNav0() {
+  document.getElementById("mySidenav1").style.width = "100%";
 }
 
-function closeNav() {
-  document.getElementById("mySidenav").style.width = "0";
+function closeNav0() {
+  document.getElementById("mySidenav1").style.width = "0";
 }
 function openNav1() {
   document.getElementById("mySidenav2").style.width = "100%";
@@ -168,14 +188,14 @@ function closeNav1() {
   document.getElementById("mySidenav2").style.width = "0";
 }
 function openNav2() {
-  document.getElementById("mySidenav2").style.width = "100%";
+  document.getElementById("mySidenav3").style.width = "100%";
 }
 
 function closeNav2() {
-  document.getElementById("mySidenav2").style.width = "0";
+  document.getElementById("mySidenav3").style.width = "0";
 }
 
 </script>
-   
+
 </body>
-</html> 
+</html>
