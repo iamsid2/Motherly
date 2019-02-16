@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 var nodemailer = require('nodemailer');
 var User = require('../models/user');
-var Delivery = require('../models/delivery');
 var Newsletter = require('../models/newsletter');
 var transporter = nodemailer.createTransport({
   service: 'gmail',
@@ -22,6 +21,9 @@ router.get('/videos', function (req, res, next) {
 });
 router.get('/about', function (req, res, next) {
   res.render('about', { title: 'Express' });
+});
+router.get('/login', function(req, res, next) {
+  res.render('login', {title : 'Express'});
 });
 
 router.post('/', function (req, res, next) {
