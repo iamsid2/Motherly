@@ -6,6 +6,7 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "apiai": "^4.0.3",
     "connect-mongo": "^2.0.3",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
@@ -16,6 +17,7 @@
     "mongoose": "^5.4.12",
     "morgan": "~1.9.0",
     "nodemailer": "^5.1.1",
-    "nodemon": "^1.18.10"
+    "nodemon": "^1.18.10",
+    "socketio": "^1.0.0"
   }
 }

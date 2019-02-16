@@ -12,6 +12,9 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
+const APIAI_TOKEN = "e9804f5b4bcd4c94b71f0d277dfdc7ee";
+const APIAI_SESSION_ID = "s260997s";
+
 //database
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
@@ -66,8 +69,46 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.listen(4000, '0.0.0.0', function() {
-    console.log('Listening to port:  ' + 4000);
+
+const ser = app.listen(4000,'0.0.0.0', function() {
+    console.log('Server Listening to port 4000');
+});
+
+const io = require('socket.io')(ser);
+io.on('connection', function(socket){
+  console.log('a user connected');
+});
+
+const apiai = require('apiai')(APIAI_TOKEN);
+
+// Web UI
+app.get('/', (req, res) => {
+  res.sendFile('index.html');
+});
+
+io.on('connection', function(socket) {
+  socket.on('chat message', (text) => {
+    console.log('Message: ' + text);
+
+    // Get a reply from API.ai
+
+    let apiaiReq = apiai.textRequest(text, {
+      sessionId: APIAI_SESSION_ID
+    });
+
+    apiaiReq.on('response', (response) => {
+      let aiText = response.result.fulfillment.speech;
+      console.log('Bot reply: ' + aiText);
+      socket.emit('bot reply', aiText);
+    });
+
+    apiaiReq.on('error', (error) => {
+      console.log(error);
+    });
+
+    apiaiReq.end();
+
+  });
 });
 
 module.exports = app;
