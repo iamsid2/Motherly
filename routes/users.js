@@ -6,6 +6,10 @@ router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
+router.get('/chatroom', (req, res) => {
+      res.render('chatroom')
+    });
+
 router.get('/chatbot', (req, res) => {
       res.render('chatbot')
     });
