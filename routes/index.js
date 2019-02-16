@@ -61,28 +61,9 @@ router.post('/', function (req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-User.find().exec(function (err, user) {
-  for (var i = 0; i < user.length; i++) {
-    var mailOptions = {
-      from: 'Motherly1402@gmail.com',
-      to: user[i].userid,
-      subject: 'Sending Email using Node.js',
-      text: 'Thanks for joining motherly.'
-    };
-    transporter.sendMail(mailOptions, function (error, info) {
-      if (error) {
-        console.log(error);
-      } else {
-        console.log('Email sent: ' + info.response);
-      }
-    });
-  }
-});
-
 router.get('/dashboard', function (req, res, next) {
   User.find().exec(function (err, user) {
     res.render('dashboard', { patients: user })
-    console.log(user);
   })
 })
 
@@ -111,11 +92,24 @@ router.post('/register', function (req, res, next) {
       phone: req.body.phone
     }
 
-    User.create(userData, function (error, resp) {
+    User.create(userData, function (error, user) {
       if (error) {
         return next(error);
       } else {
-        resp.redirect('/dashboard');
+        var mailOptions = {
+          from: 'Motherly1402@gmail.com',
+          to: user.userid,
+          subject: 'Sending Email using Node.js',
+          text: 'Thanks for joining motherly.'
+        };
+        transporter.sendMail(mailOptions, function (error, info) {
+          if (error) {
+            console.log(error);
+          } else {
+            console.log('Email sent: ' + info.response);
+          }
+        });
+        return res.redirect('/dashboard');
       }
     }
     );
