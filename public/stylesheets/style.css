@@ -2,7 +2,7 @@ body{
 	font: 15px/1.5 Arial, Helvetica,sans-serif;
 	padding:0;
 	margin:0;
-	background-color: #c48931
+	background-color: #C0C0C0;
 }
 /*Global */
 .container{
@@ -16,7 +16,7 @@ body{
 }
 .button_1{
 	height:30px;
-	background:#e8491d;
+	background:#C0C0C0;
 	border:0;
 	padding-left:20px;
 	padding-right: 20px;
@@ -28,15 +28,18 @@ body{
 	color: #ffffff;
 	margin-top: 10px;
 	margin-bottom: 10px;
-
+	height: 300px;
+	border: 1px dotted black;
+	overflow: scroll;
 }
 /*Header */
 header{
-	background: #35424a;
+	background: #C0C0C0;
 	color:#b51a12;
 	padding-top: 30px;
     min-height: 70px;
-    border-bottom: #e8491d 3px solid;
+ 	
+    border-bottom: #C0C0C0 3px solid;
 }
 header a{
 	color:#ffffff;
@@ -73,12 +76,17 @@ header nav ul li{
 
  /*Showcase*/
 #showcase{
-	min-height:  600px;
-
-	background:url('/images/homepage1.jpg') no-repeat    ;
-	background-size: 1470px 600px;
 	text-align: center;
-	color:#b51a12;
+	background:#ffffff;
+	color:#f73478;
+}
+
+#showcase img{
+	float: left;
+	width: 450px;
+	height: 450px;
+
+
 }
 #showcase h1{
 	margin-top: 200px;
@@ -93,7 +101,7 @@ header nav ul li{
 #newsletter{
 	padding: 15px;
 	color: #ffffff;
-	background: #35424a;
+	background:#E5636B ;
 }
 
 #newsletter h1{
@@ -125,11 +133,23 @@ header nav ul li{
 	height: 70px;
 
 }
+/*Videos*/
+#Videos{
+	margin-left: 10px;
+}
+
+
+
+
+
+
+
 /* Sidebar */
 aside#sidebar{
 	float: right;
 	width:30%;
 	margin-top: 10px;
+
 
 }
 
@@ -143,18 +163,146 @@ footer{
 	padding: 20px;
 	margin-top: 20px;
 	color: #ffffff;
-	background-color: #e8491d;
+	background-color: #35424a ;
 	text-align: center;
 	
 }
 
-/*videos*/
-#Videos{
-	margin-top: 20px;
-	margin-left: 40px;
-	height: 0;
-	padding: relative;
 
+
+
+/*Fliper*/
+.flip-box {
+  background-color: transparent;
+  width: 300px;
+  height: 200px;
+  border: 1px solid #f1f1f1;
+  perspective: 1000px;
+}
+
+.flip-box-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
 }
 
 
+
+.flip-box:hover .flip-box-inner {
+  transform: rotateY(180deg);
+}
+.flip-box-front, .flip-box-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.flip-box-front {
+  background-color: #35424a;
+  color: white;
+}
+
+.flip-box-back {
+  background-color: dodgerblue;
+  color: white;
+  transform: rotateY(180deg);
+}
+* {box-sizing:border-box}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+} 
+>>>>>>> Stashed changes
