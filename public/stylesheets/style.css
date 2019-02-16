@@ -172,7 +172,7 @@ footer{
 
 
 /*Fliper*/
-.flip-box {
+.flip-box ,.flip-box2 ,.flip-box3{
   background-color: transparent;
   width: 300px;
   height: 200px;
@@ -180,7 +180,7 @@ footer{
   perspective: 1000px;
 }
 
-.flip-box-inner {
+.flip-box-inner ,.flip-box-inner2 ,.flip-box-inner3{
   position: relative;
   width: 100%;
   height: 100%;
@@ -191,27 +191,28 @@ footer{
 
 
 
-.flip-box:hover .flip-box-inner {
+.flip-box:hover .flip-box-inner ,.flip-box2:hover .flip-box-inner2 ,.flip-box3:hover .flip-box-inner3{
   transform: rotateY(180deg);
 }
-.flip-box-front, .flip-box-back {
+.flip-box-front, .flip-box-back ,.flip-box-front2, .flip-box-back2 ,.flip-box-front3, .flip-box-back3{
   position: absolute;
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
 }
 
-.flip-box-front {
+.flip-box-front ,.flip-box-front2 ,.flip-box-front3 {
   background-color: #35424a;
   color: white;
 }
 
-.flip-box-back {
+.flip-box-back ,.flip-box-back2 ,.flip-box-back3{
   background-color: dodgerblue;
   color: white;
   transform: rotateY(180deg);
 }
 * {box-sizing:border-box}
+
 
 /* Slideshow container */
 .slideshow-container {
@@ -305,4 +306,3 @@ footer{
   from {opacity: .4} 
   to {opacity: 1}
 } 
->>>>>>> Stashed changes
