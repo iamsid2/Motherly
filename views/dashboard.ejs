@@ -10,17 +10,50 @@
 
 <body style="text-align: center">
     <% if(patients.length>0) { %>
-    <% for (var i=0;i<patients.length; i++) { %>
-    <p class="col-md-4">
-        <%= patients[i].username %>
-    </p>
-    <p class="col-md-4">
-        <%= patients[i].duedate %>
-    </p>
-    <p class="col-md-4">
-        <%= patients[i].nextvisitdate %>
-    </p>
+    <h1>PRE NATAL CARE PATIENTS</h1>
+    <table>
+        <tr>
+            <th>Patient Name:</th>
+            <th>Due Date:</th>
+            <th>Next Visit:</th>
+        </tr>
+        <% for (var i=0;i<patients.length; i++) { %>
+        <tr>
+            <td>
+                <%= patients[i].username %>
+            </td>
+            <td>
+                <%= patients[i].duedate %>
+            </td>
+            <td>
+                <%= patients[i].nextvisitdate %>
+            </td>
+        </tr>
+        <% } %>
+    </table>
     <% } %>
+    <% if(deliveries.length>0) {%>
+    <h1>POST NATAL CARE PATIENTS</h1>
+    <table>
+        <tr>
+            <th>Patient Name:</th>
+            <th>Delivery Date:</th>
+            <th>Next Visit:</th>
+        </tr>
+        <% for (var i=0;i<deliveries.length; i++) { %>
+        <tr>
+            <td>
+                <%= deliveries[i].username %>
+            </td>
+            <td>
+                <%= deliveries[i].duedate %>
+            </td>
+            <td>
+                <%= deliveries[i].nextvisitdate %>
+            </td>
+        </tr>
+        <% } %>
+    </table>
     <% } %>
     <form action="/register" method="POST">
         <label for="username">User Name:</label>

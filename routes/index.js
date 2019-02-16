@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var nodemailer = require('nodemailer');
 var User = require('../models/user');
+var Delivery = require('../models/delivery');
 var Newsletter = require('../models/newsletter');
 var transporter = nodemailer.createTransport({
   service: 'gmail',
@@ -10,6 +11,8 @@ var transporter = nodemailer.createTransport({
     pass: 'Motherly@14234'
   }
 });
+var users;
+var deliveries;
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -22,8 +25,8 @@ router.get('/videos', function (req, res, next) {
 router.get('/about', function (req, res, next) {
   res.render('about', { title: 'Express' });
 });
-router.get('/login', function(req, res, next) {
-  res.render('login', {title : 'Express'});
+router.get('/login', function (req, res, next) {
+  res.render('login', { title: 'Express' });
 });
 
 router.post('/', function (req, res, next) {
@@ -63,7 +66,9 @@ router.post('/', function (req, res, next) {
 
 router.get('/dashboard', function (req, res, next) {
   User.find().exec(function (err, user) {
-    res.render('dashboard', { patients: user })
+    Delivery.find().exec(function (err, delivery) {
+      res.render('dashboard', { patients: user, deliveries: delivery })
+    })
   })
 })
 
