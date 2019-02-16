@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var nodemailer = require('nodemailer');
 var User = require('../models/user');
+var Delivery = require('../models/delivery');
 var Newsletter = require('../models/newsletter');
 var transporter = nodemailer.createTransport({
   service: 'gmail',
@@ -16,10 +17,10 @@ router.get('/', function (req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-router.get('/videos', function(req, res, next) {
+router.get('/videos', function (req, res, next) {
   res.render('videos', { title: 'Express' });
 });
-router.get('/about', function(req, res, next) {
+router.get('/about', function (req, res, next) {
   res.render('about', { title: 'Express' });
 });
 
@@ -75,4 +76,47 @@ User.find().exec(function (err, user) {
     });
   }
 });
+
+router.get('/dashboard', function (req, res, next) {
+  res.render('dashboard', { title: 'Express' });
+});
+
+router.post('/dashboard', function (req, res, next) {
+  res.render('dashboard', { title: 'Express' });
+});
+
+// /* For Signup */
+router.post('/signup', function (req, res, next) {
+  var bookdate = new Date();
+  if (req.body.pass !== req.body.passconf) {
+    var err = new Error('Passwords do not match.');
+    err.status = 400;
+    res.send("passwords dont match");
+    return next(err);
+  }
+  if (req.body.username &&
+    req.body.userid &&
+    req.body.pass &&
+    req.body.duedate &&
+    req.body.nextvisit &&
+    req.body.phone) {
+
+    var userData = {
+      username: req.body.username,
+      userid: req.body.userid,
+      pass: req.body.pass,
+      duedate: req.body.duedate,
+      nextvisitdate: req.body.nextvisit,
+      phone: req.body.phone
+    }
+
+    User.create(userData, function (error, user) {
+      if (error) {
+        return next(error);
+      } else {
+        Window.alert("User Added");
+      }
+    });
+  }
+})
 module.exports = router;
