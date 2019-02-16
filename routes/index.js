@@ -3,6 +3,7 @@ var router = express.Router();
 var nodemailer = require('nodemailer');
 var User = require('../models/user');
 var Delivery = require('../models/delivery');
+var Doctor = require('../models/doctor');
 var Newsletter = require('../models/newsletter');
 var transporter = nodemailer.createTransport({
   service: 'gmail',
@@ -11,24 +12,70 @@ var transporter = nodemailer.createTransport({
     pass: 'Motherly@14234'
   }
 });
-var users;
-var deliveries;
+var Nexmo = require('nexmo');
+var nexmo = new Nexmo({
+  apiKey: '7d7f3c5f',
+  apiSecret: 'ha8U5VQTNBGglH9h'
+});
+
+// notifies for late
+var bookdate = new Date();
+User.find().exec(function (err, user) {
+  for (var i = 0; i < user.length; i++) {
+    if ((bookdate - user[i].nextvisitdate) / (1000 * 60 * 60 * 24) >= 10) {
+      var mailOptions = {
+        from: 'Motherly1402@gmail.com',
+        to: user[i].userid,
+        subject: '',
+        text: 'Kindly Contact your doctor '
+      };
+      transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Email sent: ' + info.response);
+        }
+      });
+      var from = 'Motherly'
+      var to = user[i].phone;
+      var text = 'Kindly Contact your doctor ';
+      nexmo.message.sendSms(from, to, text, (err, resp) => {
+        if (err)
+          console.log(err);
+        else {
+          console.log(resp);
+        }
+      })
+    }
+  }
+})
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+//get user dashboard
+router.get('/user', function (req, res, next) {
+  res.render('user', { title: 'Express' });
+})
+
+//get videos
 router.get('/videos', function (req, res, next) {
   res.render('videos', { title: 'Express' });
 });
+
+//get 
 router.get('/about', function (req, res, next) {
   res.render('about', { title: 'Express' });
 });
+
+//get login
 router.get('/login', function (req, res, next) {
   res.render('login', { title: 'Express' });
 });
 
+//for newsletter subscription
 router.post('/', function (req, res, next) {
   if (!req.body.email) {
     var err = new Error('Email not provided');
@@ -44,20 +91,19 @@ router.post('/', function (req, res, next) {
       if (error) {
         return next(error);
       } else {
-        console.log("user for newsletter subscription added");
-      }
-    });
-    var mailOptions = {
-      from: 'Motherly1402@gmail.com',
-      to: req.body.email,
-      subject: 'Motherly Newsletter',
-      text: 'Thanks for subscribing our newsletter!'
-    };
-    transporter.sendMail(mailOptions, function (error, info) {
-      if (error) {
-        console.log(error);
-      } else {
-        console.log('Email sent: ' + info.response);
+        var mailOptions = {
+          from: 'Motherly1402@gmail.com',
+          to: req.body.email,
+          subject: 'Motherly Newsletter',
+          text: 'Thanks for subscribing our newsletter!'
+        };
+        transporter.sendMail(mailOptions, function (error, info) {
+          if (error) {
+            console.log(error);
+          } else {
+            console.log('Email sent: ' + info.response);
+          }
+        });
       }
     });
   }
@@ -72,7 +118,7 @@ router.get('/dashboard', function (req, res, next) {
   })
 })
 
-// /* For Signup */
+// /* For registering patients */
 router.post('/register', function (req, res, next) {
   var bookdate = new Date();
   if (req.body.pass !== req.body.passconf) {
@@ -121,6 +167,7 @@ router.post('/register', function (req, res, next) {
   }
 })
 
+//Updating Patient records
 router.post('/update', function (req, res, next) {
   if (req.body.logid &&
     req.body.logpass) {
@@ -166,18 +213,54 @@ router.post('/update', function (req, res, next) {
   }
 })
 
+// Doctors Signin
+router.post('/signup', function (req, res, next) {
+  if (req.body.username &&
+    req.body.userid &&
+    req.body.pass &&
+    req.body.phone) {
+
+    var doctorData = {
+      username: req.body.username,
+      userid: req.body.userid,
+      pass: req.body.pass,
+      phone: req.body.phone
+    }
+
+    Doctor.create(doctorData, function (error, user) {
+      if (error) {
+        return next(error);
+      }
+    })
+  }
+})
+
+// Login for users
 router.post('/login', function (req, res, next) {
   if (req.body.logid &&
     req.body.logpass) {
-    User.authenticate(req.body.logid, req.body.logpass, function (error, user) {
-      if (error || !user) {
+    Doctor.authenticate(req.body.logid, req.body.logpass, function (error, user) {
+      if (error) {
         var err = new Error('Wrong email or password.');
         err.status = 401;
         return next(err);
+      }
+      if (!user) {
+        User.authenticate(req.body.logid, req.body.logpass, function (error, user) {
+          if (error || !user) {
+            var err = new Error('Wrong email or password.');
+            err.status = 401;
+            return next(err);
+          } else {
+            return res.redirect('/user');
+          }
+        })
       } else {
         return res.redirect('/dashboard');
       }
     })
   }
 })
+
+
 module.exports = router;
