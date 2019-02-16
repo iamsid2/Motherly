@@ -80,15 +80,14 @@ User.find().exec(function (err, user) {
 });
 
 router.get('/dashboard', function (req, res, next) {
-  res.render('dashboard', { title: 'Express' });
-});
-
-router.post('/dashboard', function (req, res, next) {
-  res.render('dashboard', { title: 'Express' });
-});
+  User.find().exec(function (err, user) {
+    res.render('dashboard', { patients: user })
+    console.log(user);
+  })
+})
 
 // /* For Signup */
-router.post('/signup', function (req, res, next) {
+router.post('/register', function (req, res, next) {
   var bookdate = new Date();
   if (req.body.pass !== req.body.passconf) {
     var err = new Error('Passwords do not match.');
@@ -112,13 +111,74 @@ router.post('/signup', function (req, res, next) {
       phone: req.body.phone
     }
 
-    User.create(userData, function (error, user) {
+    User.create(userData, function (error, resp) {
       if (error) {
         return next(error);
       } else {
-        Window.alert("User Added");
+        resp.redirect('/dashboard');
       }
-    });
+    }
+    );
+  }
+})
+
+router.post('/update', function (req, res, next) {
+  if (req.body.logid &&
+    req.body.logpass) {
+    if (req.body.delivery == "true") {
+      var deliveryDate = {
+        delivery: req.body.delivery,
+        deliverydate: req.body.deliverydate,
+        nextvisitdate: req.body.upnextvisit
+      }
+    }
+    else {
+      var deliveryDate = {
+        nextvisitdate: req.body.upnextvisit
+      }
+    }
+    User.findOneAndUpdate({ userid: req.body.logid, pass: req.body.logpass }, deliveryDate, function (error, user) {
+      if (error) { console.log(error); }
+      else { console.log("updated"); }
+    }).then(function () {
+      User.find({ delivery: true }).exec(function (err, user) {
+        for (i = 0; i < user.length; i++) {
+          var deliverydate = {
+            username: user[i].username,
+            userid: user[i].userid,
+            pass: user[i].pass,
+            deliverydate: user[i].deliverydate,
+            nextvisitdate: user[i].nextvisitdate,
+            phone: user[i].phone
+          }
+
+          Delivery.create(deliverydate, function (error, user) {
+            if (error) {
+              console.log(error);
+            }
+          });
+
+          User.remove({ userid: user[i].userid }, function (error) {
+            if (error) { console.log(error); }
+          })
+        }
+      });
+    })
+  }
+})
+
+router.post('/login', function (req, res, next) {
+  if (req.body.logid &&
+    req.body.logpass) {
+    User.authenticate(req.body.logid, req.body.logpass, function (error, user) {
+      if (error || !user) {
+        var err = new Error('Wrong email or password.');
+        err.status = 401;
+        return next(err);
+      } else {
+        return res.redirect('/dashboard');
+      }
+    })
   }
 })
 module.exports = router;

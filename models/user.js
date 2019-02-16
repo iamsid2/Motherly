@@ -15,9 +15,17 @@ var UserSchema = new mongoose.Schema({
     },
     pass: {
         type: String,
+        unique: true,
         required: true,
+        trim: true
     },
-    date: {
+    duedate: {
+        type: Date,
+        unique: false,
+        required: true,
+        trim: true
+    },
+    nextvisitdate: {
         type: Date,
         unique: false,
         required: true,
@@ -28,6 +36,15 @@ var UserSchema = new mongoose.Schema({
         unique: true,
         required: true,
         trim: true
+    },
+    delivery: {
+        type: Boolean,
+        default: false,
+        trim: true
+    },
+    deliverydate: {
+        type: Date,
+        trim:true
     }
 });
 
@@ -45,6 +62,7 @@ UserSchema.statics.authenticate = function (logid, logpass, callback) {
             return callback(null, user);
         })
 };
+
 
 var User = mongoose.model('User', UserSchema);
 module.exports = User;

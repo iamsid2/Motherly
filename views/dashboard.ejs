@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        SMSSENDER
+    </title>
+    <!-- <link rel='stylesheet' href='/stylesheets/style.css' /> -->
+</head>
+
+<body style="text-align: center">
+    <% if(patients.length>0) { %>
+    <% for (var i=0;i<patients.length; i++) { %>
+    <p class="col-md-4">
+        <%= patients[i].username %>
+    </p>
+    <p class="col-md-4">
+        <%= patients[i].duedate %>
+    </p>
+    <p class="col-md-4">
+        <%= patients[i].nextvisitdate %>
+    </p>
+    <% } %>
+    <% } %>
+    <form action="/register" method="POST">
+        <label for="username">User Name:</label>
+        <input name="username" type="text">
+        <label for="userid">Email:</label>
+        <input name="userid" type="email">
+        <label for="pass">Password:</label>
+        <input name="pass" type="password">
+        <label for="passconf">Confirm Password:</label>
+        <input name="passconf" type="password">
+        <label for="duedate">Due Date:</label>
+        <input name="duedate" type="date">
+        <label for="nextvisit">Next Visit:</label>
+        <input name="nextvisit" type="date">
+        <label for="phone">Phone:</label>
+        <input name="phone" type="text" value="+91">
+        <button type="submit">Add Patient</button>
+    </form>
+    <br><br><br><br><br><br>
+    <form action="/update" method="POST">
+        <label for="logid">Email:</label>
+        <input name="logid" type="email">
+        <label for="logpass">Password:</label>
+        <input name="logpass" type="password">
+        <label for="upnextvisit">Next visit:</label>
+        <input name="upnextvisit" type="date">
+        <label for="delivery">Delivery Complete:</label>
+        <input name="delivery" type="radio" value="true">YES
+        <input name="delivery" type="radio" value="false">NO<br>
+        <label for="deliverydate">Delivery Date:</label>
+        <input name="deliverydate" type="date">
+        <button type="submit">Update Patient</button>
+    </form>
+    <h2></h2>
+    <h3></h3>
+</body>
+
+</html>
