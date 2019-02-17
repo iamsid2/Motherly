@@ -32,7 +32,9 @@ router.get('/chatbot', (req, res) => {
 
 //get user dashboard
 router.get('/userDash', function (req, res, next) {
-      res.render('userDash', { title: 'Express' });
+  User.find().exec(function (err, user) {
+      res.render('userDash', { title: 'Express', user:user });
+    });
     })
 
 //get videos

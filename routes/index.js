@@ -52,7 +52,9 @@ User.find().exec(function (err, user) {
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  res.render('index', { title: 'Express' });
+  User.find().exec(function (err, users) {
+  res.render('index', { title: 'Express', user:users });
+})
 });
 
 //get login
@@ -149,12 +151,6 @@ router.post('/login', function (req, res, next) {
 
 // GET for logout
 router.get('/logout', function (req, res, next) {
-  // if (req.session) {
-  //   // delete session object
-  //   req.session.destroy(function (err) {
-  //     if (err) {
-  //       return next(err);
-  //     } else {
         return res.redirect('/');
       });
 

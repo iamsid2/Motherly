@@ -53,14 +53,20 @@ body {
 
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="/">Home</a>
+  <a href="/users/userDash">Home</a>
+  <% if(user) { %>
   <a href="/users/videos">Videos</a>
   <a href="/users/diet">Diet & Maternity Planner</a>
   <a href="/users/schemes">Schemes</a>
   <a href="/users/chatbot">Chatbot</a>
   <a href="/users/chatroom">Chatroom</a>
   <li><a href="http://ambulancego.herokuapp.com/">AmbulanceGo</a></li>
+  <li><%= user.username %></li>
   <li><a href="/logout">Logout</a></li>
+  <% } else { %>
+  <li><a href="#" id="login">Login</a></li>
+  <li><a href="#" id="signup">Signup</a></li>
+  <% } %>
 </div>
 
 <h2 style="text-align: center;">Common Myths And Mysconceptions</h2>
