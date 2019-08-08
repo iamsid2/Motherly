@@ -1,8 +1,8 @@
 # Project Title
 
-The title of our project is Motherly(A Maternity Planner)
-This project aims to give better services to the pregnent ladies of society for pre and post natalcare using an interactive online interface.
-We are providing services like chatroom, chatbot, sms service to decrease the IMR(infant mortality rate).
+The title of the project is Motherly(A Maternity Planner)
+This project aims to give better services to the pregnant ladies of the society for pre and post natal care using an interactive online interface. 
+We  provide services like chatroom, chatbot, sms service in a very user friendly way which aims to reduce the the IMR(infant mortality rate).
 
 ## Getting Started
 
@@ -23,7 +23,7 @@ You should also have mongodb installed in your system.
 nodemon ./bin/www
 ```
 
-When it shows The app in running in port 3030
+When it shows the app is running in port 3030
 Open your browser and goto
 
 ```
