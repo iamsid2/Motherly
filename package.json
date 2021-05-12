@@ -17,7 +17,7 @@
     "mongoose": "^5.4.12",
     "morgan": "~1.9.0",
     "nexmo": "^2.4.1",
-    "nodemailer": "^5.1.1",
+    "nodemailer": "^6.4.16",
     "nodemon": "^1.18.10",
     "socketio": "^1.0.0",
     "semantic-ui-css": "^2.3.1",
